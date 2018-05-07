@@ -15,23 +15,20 @@ triangle = \
 [63, 66, 4, 68, 89, 53, 67, 30, 73, 16, 69, 87, 40, 31],\
 [4, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 23]]
 
-total = triangle[0][0]
-pos = 0
-now = 0
-print(total)
+rt = triangle[::-1]
 
-for i in range(1, len(triangle)):
-   
-   if(triangle[i][pos] > triangle[i][pos+1]):
-     now = triangle[i][pos]
+big = 0
+for ii in range(len(rt)-1):
+  newrow = []
+  for jj in range(len(rt[ii])-1):
+    
+    first = rt[ii][jj] + rt[ii+1][jj] 
+    second = rt[ii][jj+1] + rt[ii+1][jj] 
 
-   if(triangle[i][pos] < triangle[i][pos+1]):
-     now = triangle[i][pos+1]
-     pos += 1
+    newrow.append(max(first, second))
 
-   total += now
-   print(now)
+  rt[ii+1] = newrow
 
-print(total)
 
+print(rt[-1])
 
